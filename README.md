@@ -1,5 +1,5 @@
 ### Description:
-Tests written on pytests+request for this [api](https://qa-test-develop.marlin.onnisoft.com/swagger/index.html) 
+Tests are written using pytests+request for this [api](https://qa-test-develop.marlin.onnisoft.com/swagger/index.html) 
 
 ### Run instruction:
 ```
