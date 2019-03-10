@@ -15,19 +15,33 @@ def get_random_registered_user():
     """
     creds = (
         {
-            "email": "shawn64@example.com",
+            "email": "shawn642@example.com",
             "password": "^0p4D+kgAG",
-            "userName": "steven81",
+            "userName": "stteven81",
         },
 
         {
-            "email": "garciaamanda@example.org",
-            "password": "7b#1II8sn@",
-            "userName": "jasmin43"
+            "email": "garciaam2anda@example.org",
+            "password": "7b#1II8sn@s",
+            "userName": "ja2smin43"
         },
     )
 
     return creds[random.randint(0, len(creds)-1)]
+
+
+@pytest.fixture
+def get_registered_user_for_doublicate_email_test():
+    """
+    Return registered test user credentials. In real project I would probably get test users from db
+    """
+    creds = {
+            "email": "shsd642@example.com",
+            "password": "^0p4D+kgAG",
+            "userName": "sasdven81",
+        }
+
+    return creds
 
 
 @pytest.fixture

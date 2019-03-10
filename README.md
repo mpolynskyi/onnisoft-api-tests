@@ -3,9 +3,9 @@ Tests written on pytests+request for this [api](https://qa-test-develop.marlin.o
 
 ### Run instruction:
 ```
-git clone git@github.com:mpolynskyi/onnisoft-api-tests.git
+git clone https://github.com/mpolynskyi/onnisoft-api-tests.git
 cd onnisoft-api-tests
-docker build -t onnisoft . && docker run -it onnisoft
+docker-compose up
 ```
 ### Notes:
 Some tests are failing because there is bug,

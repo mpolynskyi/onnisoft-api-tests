@@ -5,7 +5,7 @@ import requests
 def teardown():
     """
     make Balance of test user equal to zero after each test
-    I would like to do it via DB, but I can't withoud db credentials
+    I would like to do it via DB, but I can't without db credentials
     """
     pass
 

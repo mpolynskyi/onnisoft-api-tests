@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+
+  testing:
+    image: python:3-onnisoft-test
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/var/job
+    working_dir: /var/job/

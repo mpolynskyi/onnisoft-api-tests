@@ -28,15 +28,15 @@ def test_registration_already_registered_user_name(get_random_registered_user):
     assert "Failed : DuplicateUserName" in response.text
 
 
-def test_registration_already_registered_email(get_random_registered_user):
+def test_registration_already_registered_email(get_registered_user_for_doublicate_email_test):
     """
     this test failing because of api bug: I can register user with already registered email
     After fix and making error message "Failed : DuplicateEmail" - this test will pass in case if fixture test vaules in DB
     """
     body = {
-        "email": get_random_registered_user["email"],
-        "password": get_random_registered_user["password"],
-        "userName": "steven8112dds3"
+        "email": get_registered_user_for_doublicate_email_test["email"],
+        "password": get_registered_user_for_doublicate_email_test["password"],
+        "userName": fake.user_name()
     }
 
     response = requests.post(tests.config.get_registration_endpoint(), json=body, headers=HEADERS)
@@ -126,9 +126,12 @@ def test_username_validation():
     assert response.status_code == 400
     assert "Failed : InvalidUserName" in response.text
 
-    body["userName"] = 5234234
+    body["userName"] = fake.credit_card_number()
     response = requests.post(tests.config.get_registration_endpoint(), json=body, headers=HEADERS)
-
-    print(response.text)
     assert response.status_code == 400
     assert "Failed : InvalidUserName" in response.text
+
+
+"""
+TODO: add tests with non english characters, emojis...
+"""

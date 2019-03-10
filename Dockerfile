@@ -1,10 +1,6 @@
-FROM python:3
+FROM python:3.7.2-alpine
 
-WORKDIR /onnisoft
-
-COPY requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt
-
-COPY tests ./tests
+COPY requirements.txt /tmp
+RUN pip install --requirement /tmp/requirements.txt
 
 CMD [ "python", "-m", "pytest", "-p", "no:warnings", "--show-progress" ]
