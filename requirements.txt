@@ -1,0 +1,4 @@
+requests==2.21.0
+Faker==1.0.2
+pytest==4.3.0
+pytest-progress==1.2.1
