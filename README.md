@@ -4,6 +4,7 @@ Tests written on pytests+request for this [api](https://qa-test-develop.marlin.o
 ### Run instruction:
 ```
 git clone git@github.com:mpolynskyi/onnisoft-api-tests.git
+cd onnisoft-api-tests
 docker build -t onnisoft . && docker run -it onnisoft
 ```
 ### Notes:
