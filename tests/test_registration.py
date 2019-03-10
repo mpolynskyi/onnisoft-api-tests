@@ -93,17 +93,17 @@ def test_password_validation():
     body["password"] = "testtesttest!"
     response = requests.post(tests.config.get_registration_endpoint(), json=body, headers=HEADERS)
     assert response.status_code == 400
-    assert "Failed: PasswordRequiresDigit,PasswordRequiresUpper" in response.text
+    assert "Failed : PasswordRequiresDigit,PasswordRequiresUpper" in response.text
 
     body["password"] = "testtesttest!2"
     response = requests.post(tests.config.get_registration_endpoint(), json=body, headers=HEADERS)
     assert response.status_code == 400
-    assert "Failed: PasswordRequiresUpper" in response.text
+    assert "Failed : PasswordRequiresUpper" in response.text
 
     body["password"] = "Testtesttest!"
     response = requests.post(tests.config.get_registration_endpoint(), json=body, headers=HEADERS)
     assert response.status_code == 400
-    assert "Failed: PasswordRequiresDigit" in response.text
+    assert "Failed : PasswordRequiresDigit" in response.text
 
     body["password"] = ""
     response = requests.post(tests.config.get_registration_endpoint(), json=body, headers=HEADERS)

@@ -27,7 +27,7 @@ def get_random_registered_user():
         },
     )
 
-    return creds[random.choice(creds)]
+    return random.choice(creds)
 
 
 @pytest.fixture
@@ -61,7 +61,7 @@ def get_registered_user_with_zero_balance():
 @pytest.fixture
 def get_registered_user_with_10000_balance():
     """
-    Imagine that this user has 10000 balance. I can't set it via base or via /deposit because tokens not work, also
+    Imagine that this user has 10000 balance. I can't set it via DB or via /deposit because tokens not work, also
     /withdraw - too ¯\_(ツ)_/¯
     """
     creds = {
