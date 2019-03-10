@@ -12,17 +12,14 @@ def teardown():
 
 def test_take_from_deposite_100(get_logged_in_user_with_10000_balance):
     """
-    This test sometime not working because api return broken/wrong Bearer token
-    When Bearer token is ok - test failing because I don't have user with 10000 balance, so this test just example
+    This test sometimes does not work because API may return broke or wrong Bearer token.
+    When Bearer token is ok - test failing because I don't have the user with enough money on balance, so this test just example.
     Also there is bug in api: it adding balance, but not deduct it.
-    Not wrote more tests because /balance not working, so I can't compare before amount and after test
+     I did not write more tests because /balance not working, so I can't compare before amount and after the test
     """
-    username = get_logged_in_user_with_10000_balance["userName"]
-    token = get_logged_in_user_with_10000_balance["token"]
-
-    url = tests.config.get_withdraw_endpoint(username)
+    url = tests.config.get_withdraw_endpoint(get_logged_in_user_with_10000_balance["userName"])
     headers = {
-        "Authorization": token
+        "Authorization": get_logged_in_user_with_10000_balance["token"]
     }
 
     body = {

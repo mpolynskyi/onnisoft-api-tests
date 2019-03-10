@@ -4,7 +4,7 @@ import requests
 
 def test_user_with_zero_balance(get_logged_in_user_with_zero_balance):
     """
-    This test not working because api return broken/wrong Bearer token
+    This test not working because api returns broken/wrong Bearer token
     """
     username = get_logged_in_user_with_zero_balance["userName"]
     token = get_logged_in_user_with_zero_balance["token"]

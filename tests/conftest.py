@@ -27,7 +27,7 @@ def get_random_registered_user():
         },
     )
 
-    return creds[random.randint(0, len(creds)-1)]
+    return creds[random.choice(creds)]
 
 
 @pytest.fixture

@@ -8,4 +8,5 @@ cd onnisoft-api-tests
 docker-compose up
 ```
 ### Notes:
+There is no any integration tests FYI.
 Some tests are failing because there is a bug, some tests failing because not all endpoints are available, some tests failing because of wrong/broken Bearer token. I'd be great like to explain every not clear place, please contact with me!

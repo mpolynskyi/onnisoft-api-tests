@@ -30,8 +30,8 @@ def test_registration_already_registered_user_name(get_random_registered_user):
 
 def test_registration_already_registered_email(get_registered_user_for_doublicate_email_test):
     """
-    this test failing because of api bug: I can register user with already registered email
-    After fix and making error message "Failed : DuplicateEmail" - this test will pass in case if fixture test vaules in DB
+    This test failing because of API bug: I can register the user with already registered email.
+    After fix and making error message "Failed : DuplicateEmail" - this test will pass if fixtures are loaded in the database
     """
     body = {
         "email": get_registered_user_for_doublicate_email_test["email"],
@@ -46,8 +46,8 @@ def test_registration_already_registered_email(get_registered_user_for_doublicat
 
 def test_email_validation():
     """
-    there is no validation for @ and domain after @ so this test will fails
-    Need to fix it and test will pass if error message will be "Failed : WrongEmail"
+    There is no validation for @ and domain after @ so this test will fails
+    Need to fix it, and the test will pass if an error message will be "Failed : WrongEmail"
     """
     error_message = "Failed : WrongEmail"
 
@@ -93,17 +93,17 @@ def test_password_validation():
     body["password"] = "testtesttest!"
     response = requests.post(tests.config.get_registration_endpoint(), json=body, headers=HEADERS)
     assert response.status_code == 400
-    assert "Failed: PasswordRequiresDigit,PasswordRequiresUpper"
+    assert "Failed: PasswordRequiresDigit,PasswordRequiresUpper" in response.text
 
     body["password"] = "testtesttest!2"
     response = requests.post(tests.config.get_registration_endpoint(), json=body, headers=HEADERS)
     assert response.status_code == 400
-    assert "Failed: PasswordRequiresUpper"
+    assert "Failed: PasswordRequiresUpper" in response.text
 
     body["password"] = "Testtesttest!"
     response = requests.post(tests.config.get_registration_endpoint(), json=body, headers=HEADERS)
     assert response.status_code == 400
-    assert "Failed: PasswordRequiresDigit"
+    assert "Failed: PasswordRequiresDigit" in response.text
 
     body["password"] = ""
     response = requests.post(tests.config.get_registration_endpoint(), json=body, headers=HEADERS)
@@ -114,8 +114,8 @@ def test_password_validation():
 
 def test_username_validation():
     """
-    This test failing because model expect string but I still can send digits and able to register.
-    Maybe it's not a bug (because you can store digits as string in db), need communication for this
+    This test is failing because the database expects string, but I still can send digits and able to register.
+    Maybe it's not a bug (because you can store digits as the string in DB), need communication for this
     """
     body = {
         "email": fake.safe_email(),

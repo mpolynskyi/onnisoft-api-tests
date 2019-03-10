@@ -4,22 +4,19 @@ import requests
 
 def teardown():
     """
-    make Balance of test user equal to zero after each test
-    I would like to do it via DB, but I can't without db credentials
+    Make Balance of test user equal to zero after each test
+    I would like to do it via DB, but I can't without DB credentials
     """
     pass
 
 
 def test_add_to_deposit_100(get_logged_in_user_with_zero_balance):
     """
-    This test not working because api return broken/wrong Bearer token
+    This test not working because api returns broken/wrong Bearer token
     """
-    username = get_logged_in_user_with_zero_balance["userName"]
-    token = get_logged_in_user_with_zero_balance["token"]
-
-    url = tests.config.get_deposit_endpoint(username)
+    url = tests.config.get_deposit_endpoint(get_logged_in_user_with_zero_balance["userName"])
     headers = {
-        "Authorization": token
+        "Authorization": get_logged_in_user_with_zero_balance["token"]
     }
 
     body = {
